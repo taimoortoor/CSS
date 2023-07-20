@@ -1,4 +1,7 @@
-#bp-widget-container { 
-    z-index: 9999;
-} 
-
+.bpw-layout {
+    width: 360px !important;
+    border: 1px;
+    height: 60vh;
+    border-radius: 10px;
+    bottom: 20%;
+  }
