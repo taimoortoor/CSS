@@ -1,10 +1,4 @@
 .bpw-layout {
     z-index: 9999;
-    width: 360px !important;
-    border: 1px;
-    height: 60vh;
-    border-radius: 10px;
-    right: 10%;
-    bottom: 20%;
   }
 
