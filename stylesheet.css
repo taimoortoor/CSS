@@ -1,4 +1,4 @@
-.bpw-layout {
-    z-index: 100000;
-  }
+#bp-widget-container { 
+    z-index: 9999;
+} 
 
