@@ -223,7 +223,7 @@ a {
   /* Adds a transition effect to the button when its size changes */
   transition: width 1s, height 1s;
 }
-}
+
 
 /* Styling for the 'powered by' section of the chat interface */
 .bpw-powered {
