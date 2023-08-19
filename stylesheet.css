@@ -1,286 +1,482 @@
-/* This CSS rule sets the default font size of the entire document */
-html {
-  font-size: 16px;
+:root {
+  --webchat-width: 400px;
+  --primary-color: #6675fa;
+  --primary-hover: #384aea;
+  --bot-avatar-bg: #000000;
+  --msg-bot-bg: #f5f5f5;
+  --msg-user-bg: #6675fa;
+  --new-msg-indicator: #2563eb;
+  --header-icon-color: #fff;
+  --space-from-corner: 18px;
+  --send-btn-radius: 100%; /* alternatively, 4px for a more square style */
+
+  /* this is the bottom right icon on the website to open the chat */
+  --bubble-widget-background-color: #00A0F9;
+  --bubble-widget-icon-size: 65px;
+  --bubble-widget-icon-url: url(https://i.kym-cdn.com/photos/images/original/001/668/822/e12.jpg)
+#btn-close i,
+#btn-delete i,
+#btn-botinfo i,
+#btn-download,
+#btn-conversations {
+  display: none;
 }
 
-/* These CSS rules sets the text direction of the paragraph (RTL or LTR) */
-p,
-.bpw-from-bot > div,
-#input-message {
-  direction: ltr;
+#btn-close::before,
+#btn-delete::before,
+#btn-botinfo::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-/* This rule changes the color of the text in the input message */
-#input-message {
-  color: #ffffff;
+#btn-close::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /%3E%3C/svg%3E%0A");
 }
 
-/* Changes the color of the new message indicator */
-.bpw-new-messages-indicator {
-  background-color: #4b4b4b;
-  color: #ffffff;
+#btn-delete::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3' /%3E%3C/svg%3E%0A");
 }
 
-/* Styling for the chat header container */
-.bpw-header-container {
-  margin: 10px;
-  background: #4e4e4e;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-  border: 1px;
-  border-radius: 10px;
-  color: #4e4e4e;
+#btn-botinfo::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z' /%3E%3C/svg%3E%0A");
 }
 
-/* Styling for the typing bubble */
-.bpw-typing-bubble {
-  background: #ffffff;
+:root {
+  --font-size: 15px;
+  --font-size-small: 12px;
+  --lighthouse: var(--primary-color);
+  --hover-lighthouse: var(--primary-hover);
+  --focus-lighthouse: var(--primary-hover);
 }
 
-/* Styling for the chat bubble content */
-.bpw-chat-bubble-content {
-  background-color: #4b4b4b;
-  border-radius: 3px;
-  border: 1px transparent;
+.bpw-date-container {
+  color: #a3a3a3;
 }
 
-/* Styling for the date container, header name, and header subtitle */
-.bpw-date-container,
-.bpw-header-name,
-.bpw-header-subtitle {
-  color: #ffffff;
+.bpw-message-group > :not(:last-child):not(.hidden) {
+  margin-bottom: 6px;
 }
 
-/* Styling for the layout of the chat bubble. Width, height, border, position and radius of the chat bubble */
+.bpw-date-container > .bpw-small-line {
+  display: none;
+}
+
 .bpw-layout {
-  width: 360px !important;
-  height: 60vh;
-  border-radius: 10px;
-  right: 10%;
-  bottom: 5%;
-  border: 1px;
+  border: none;
+  border-radius: 0;
 }
-/* Responsive design rules for devices with width less than or equal to 767px */
-@media screen and (max-device-width: 767px) {
+
+@media (max-width: 480px) {
   .bpw-layout {
-    width: 100% !important;
-    height: 100%;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
+    margin-right: var(--space-from-corner);
+    margin-bottom: var(--space-from-corner);
+    max-height: calc(100% - var(--space-from-corner) * 2);
+    box-shadow: 0px 4px 18px -6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: var(--webchat-width) !important;
   }
 }
 
-/* Changes the fill color of the header icons to white */
-.bpw-header-icon,
-.bpw-header-icon svg,
-.bpw-header-icon svg path {
-  fill: #ffffff !important;
+@media (max-width: 380px) {
+  .bpw-layout {
+    margin-right: 0;
+    margin-bottom: 0;
+    max-height: 100%;
+  }
 }
 
-/* Changes the color of the placeholder text in the input message */
-#input-message::placeholder {
-  color: #ffffff;
-}
-
-
-/* Styling for the keyboard single choice option */
-.bpw-keyboard-single-choice {
-  background-color: #000000;
-  border: none;
-}
-
-/* Styling for the buttons in the chat interface */
-.bpw-button,
-.bpw-button-alt {
-  background-color: #323232;
-  color: #ffffff;
-  border-radius: 10px;
-  border: none;
-}
-
-
-/* Styling for hover effect on the buttons in the chat interface */
-.bpw-button:hover,
-.bpw-button-alt:hover {
-  background-color: #4b4b4b;
-}
-
-
-/* Styling for hyperlinks in the chat interface */
-a {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-/* Styling for the chat container, including color, scrollbar width and color, and border */
 .bpw-chat-container {
-  background-color: #000000;
-  scrollbar-width: thin;
-  scrollbar-color: #4b4b4b #000000;
   border: none;
+  color: #171717;
+  animation: 400ms ease-out 0ms 1 normal forwards running fadeIn, 400ms ease-out 0ms 1 normal forwards running slideUp;
 }
 
-/* Styling for the chat bubble content when it's from the bot */
+.bpw-header-container {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+}
+
+.bpw-header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  text-overflow: ellipsis;
+}
+
+.bpw-msg-list {
+  padding: 8px 12px;
+}
+
 .bpw-from-bot .bpw-chat-bubble .bpw-chat-bubble-content {
-  background-color: #4b4b4b;
-  color: #ffffff;
+  background-color: var(--msg-bot-bg);
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 400;
 }
 
-/* Styling for the chat bubble content when it's from the user */
 .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: color-mix(in srgb, black 5%, var(--primary-color));
+  font-weight: 300;
 }
 
-/* Styling for the composer section of the chat interface */
-.bpw-composer {
-  background-color: #000000;
-  border-top: 1px solid #4b4b4b;
+.bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content a {
+  color: rgba(255, 255, 255, 0.8);
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
 }
 
-
-/* Styling for the scrollbar in the chat container */
-.bpw-chat-container::-webkit-scrollbar,
-.bpw-chat-container::-moz-scrollbar {
-  width: 10px;
-  background-color: #000000;
+.bpw-chat-bubble-content {
   border: none;
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+  font-size: var(--font-size);
 }
 
-/* Styling for the avatar of the bot */
-.bpw-bot-avatar img,
-.bpw-bot-avatar svg {
-  background: #000000;
-  border: 3px solid #ffffff;
+.bpw-new-messages-indicator {
+  color: var(--new-msg-indicator);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
 }
 
-/* Styling for the general scrollbar in the web page */
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-/* Styling for the track of the general scrollbar and the chat container scrollbar */
-::-webkit-scrollbar-track,
-.bpw-chat-container::-webkit-scrollbar-track,
-.bpw-chat-container::-moz-scrollbar-track {
-  background-color: transparent;
-}
-
-/* Styling for the thumb of the general scrollbar and the chat container scrollbar */
-::-webkit-scrollbar-thumb,
-.bpw-chat-container::-webkit-scrollbar-thumb,
-.bpw-chat-container::-moz-scrollbar-thumb {
-  background-color: #000000;
-  border-radius: 1rem;
-  border: 0.5rem solid transparent;
-}
-
-/* Styling for the floating button icon in the chat interface */
-.bpw-floating-button i svg path {
-  fill: #ffffff;
-}
-
-/* Styling for the floating button in the chat interface */
-.bpw-floating-button {
-  background-image: url(https://i.kym-cdn.com/photos/images/original/001/668/822/e12.jpg);
-  border-radius: 52px;
-  
-  /* Aligns the button to the center of the container */
-  float: center;
-  /* Sets the fill color of the button icon */
-  fill: rgb(255, 255, 255);
-  /* Changes the cursor to a pointer when hovering over the button */
-  cursor: pointer;
-  /* Removes the outline around the button when clicked */
-  outline: none;
- 
-  /* Centers the icon inside the button element */
+.bpw-composer-inner {
   display: flex;
   align-items: center;
-  justify-content: center;
- 
-  /* Sets the z-index to ensure the button is on top of other elements */
-  z-index: 1;
-    /* Sets the width and height of the button */
-  width: 65px;
-  height: 65px;
-  /* Changes the cursor to a pointer when hovering over the button */
-  cursor: pointer;
-  /* Rounds the corners of the button */
-  border-radius: 50%;
-  /* Adds a shadow effect to the button */
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    /* Clips any content that overflows the button */
-  overflow: hidden;
- 
-  /* Removes padding and borders from the button */
-  padding: 0;
-  border: none;
-  background-clip: padding-box;
- 
-  /* Adds a transition effect to the button when its size changes */
-  transition: width 1s, height 1s;
+  align-self: stretch;
+  padding: 8px 12px;
 }
 
-
-/* Styling for the 'powered by' section of the chat interface */
-.bpw-powered {
-  text-align: center;
-  padding: 10px;
-  color: #ffffff;
-  background: #000000;
-  font-size: 16px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+.bpw-send-button {
+  height: 25px;
+  width: 25px;
+  background-color: var(--primary-color);
+  border-radius: var(--send-btn-radius);
+  position: relative;
+  color: rgba(255, 255, 255, 0);
+  position: absolute;
+  right: 20px;
+  transition: all 100ms;
 }
 
-/* Styling for the hyperlinks in the 'powered by' section of the chat interface */
-.bpw-powered a {
-  color: #ffffff;
-  text-decoration: none;
+.bpw-send-button:disabled {
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
-/* Styling for hover effect on the hyperlinks in the 'powered by' section of the chat interface */
-.bpw-powered a:hover {
-  text-decoration: underline;
+.bpw-send-button:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 90%, transparent);
 }
 
-
-/* Styling for the send button when it's disabled */
-.bpw-send-button:disabled,
-.bpw-send-button:disabled:hover {
-  opacity: 0.4;
-  background-color: var(--theme-primary);
-  cursor: default;
+.bpw-send-button::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('https://uploads-ssl.webflow.com/635c4eeb78332f7971255095/64cc26ef6b0486595a259008_Send%20Icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-/* Styling for the send buttons */
-.bpw-send-buttons {
+.bpw-composer textarea {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 8px 12px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  height: auto;
+  line-height: 1.5;
+  height: 42px;
+  transition: all 200ms;
 }
 
-/* Styling for the individual send button */
-.bpw-send-button {
+.bpw-composer textarea:focus {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.bpw-from-bot .bpw-chat-bubble:last-child > .bpw-chat-bubble-content {
+  border-radius: 12px 12px 12px 4px;
+}
+
+.bpw-keyboard-single-choice {
+  background: none;
+  border: none;
+  padding: 16px 8px 4px 8px;
+}
+
+.bpw-button {
+  border-radius: 12px;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  margin: 2px 4px;
+  transition: all 100ms;
+}
+
+.bpw-from-bot .bpw-bot-avatar,
+.bpw-from-bot .bpw-bot-avatar img,
+.bpw-from-bot .bpw-bot-avatar svg {
+  height: 26px;
+  width: 26px;
+}
+
+.bpw-botinfo-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.bpw-botinfo-summary > * {
+  margin: 0;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.bpw-bot-avatar,
+.bpw-bot-avatar img,
+.bpw-bot-avatar svg {
+  border: none;
+  border-radius: 100%;
+  background: var(--bot-avatar-bg);
+  height: 40px;
+  width: 40px;
+}
+
+.bpw-message-container {
+  animation: 150ms ease-out 0ms 1 normal forwards running fadeIn, 150ms ease-out 0ms 1 normal forwards running slideUp;
+}
+
+.bpw-button:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 5%, transparent);
+}
+
+.bpw-header-icon {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: #bbb;
+  margin-left: 12px;
+  text-align: right;
+  vertical-align: middle;
+  cursor: pointer;
+  fill: #1a1e22;
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.bpw-header-icon:hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: color-mix(in srgb, var(--header-icon-color) 20%, transparent);
+  border-radius: 4px;
+}
+
+.bpw-header-icon svg,
+.bpw-header-icon svg path {
+  fill: color-mix(in srgb, var(--header-icon-color) 80%, transparent);
+  transition: fill 50ms;
+}
+
+.bpw-header-icon:hover,
+.bpw-header-icon:hover svg,
+.bpw-header-icon:hover svg path {
+  fill: color-mix(in srgb, var(--header-icon-color) 100%, transparent);
+}
+
+::-webkit-input-placeholder {
+  color: #b0b0b0;
+}
+
+.bpw-powered {
+  border-top: none;
+  padding: 0 0 12px 0;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  color: #b0b0b0;
+  font-size: var(--font-size-small);
+}
+
+.bpw-powered a {
+  color: #3e9cff;
+}
+
+.bp3-overlay-backdrop {
+  background-color: rgb(255 255 255 / 40%);
+}
+
+.slick-arrow {
+  height: 36px;
+  width: 36px;
+  border-radius: 100%;
+  border: 1px solid #efefef;
+}
+
+.slick-arrow::before {
+  color: #b1b1b1;
+}
+
+.bpw-message-big-container.bpw-from-bot {
+  padding-right: 30px;
+}
+
+.bpw-chat-bubble-content:has(.bpw-card-container) {
+  padding: 0;
+  background-color: transparent !important;
+}
+
+.slick-disabled {
+  display: none !important;
+}
+
+.bpw-card-container {
+  background: #f5f5f5;
+  border: none;
+  border-radius: 12px;
+}
+
+.bpw-card-header {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.bpw-card-buttons {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: stretch;
+}
+
+.bpw-card-action:last-child {
+  margin-bottom: 12px;
+}
+
+.bpw-card-action {
+  border: none;
+  background: white;
+  border-radius: 6px;
+  padding: 2px 10px;
+  box-shadow: 0 5px 0px -8px rgba(0, 0, 0, 0.1), 0 2px 0px -3px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.025),
+    0 1px 3px 1px rgba(0, 0, 0, 0.015);
+}
+
+.slick-next {
+  right: -1px;
+}
+
+.slick-slider {
+  margin-bottom: 10px;
+}
+
+.slick-track:after,
+.slick-track:before {
+  content: none;
+}
+
+.slick-track {
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.bpw-floating-button i svg {
+  display: none;
+}
+
+.bpw-floating-button {
+  align-self: center;
+  background-color: var(--bubble-widget-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--spacing-medium);
-  background-color: var(--theme-primary);
-  padding: 20px;
-  width: 24px;
-  height: 24px;
-  color: transparent;
-  cursor: pointer;
-  background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2217%22%20height%3D%2220%22%20viewBox%3D%220%200%2017%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M1.77152%201.04207L15.5347%209.13807C16.192%209.52472%2016.192%2010.4753%2015.5347%2010.8619L8.5%2015L1.70485%2018.9971C0.998111%2019.4129%200.118918%2018.8481%200.203121%2018.0325L0.811331%2012.1412C0.85993%2011.6705%201.23186%2011.2983%201.70256%2011.2493L8.21533%2010.5717C9.32302%2010.4565%209.44138%208.88961%208.36357%208.60928L1.54478%206.83574C1.15164%206.73349%200.859426%206.40357%200.805392%206.00096L0.27339%202.03702C0.162447%201.21039%201.05263%200.619195%201.77152%201.04207Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E%0A') !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  transition: background-color 0.2s;
+  transition: all 200ms;
 }
 
-.bpw-send-button:not(:disabled):hover {
-  background-color: var(--theme-primary-hover);
+.bpw-floating-button::before {
+  content: '';
+  color: white;
+  background-image: var(--bubble-widget-icon-url);
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover;
+  position: absolute;
+  box-shadow: none;
+  width: var(--bubble-widget-icon-size);
+  height: var(--bubble-widget-icon-size);
+}
+
+.bpw-floating-button::before:hover {
+  content: '';
+  color: white;
+  background-image: var(--bubble-widget-icon-url);
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover;
+  position: absolute;
+  box-shadow: none;
+  width: var(--bubble-widget-icon-size);
+  height: var(--bubble-widget-icon-size);
+}
+
+.bpw-msg-list-scroll-container {
+  overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+  width: 11px;
+  border: 2px solid white;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background-color: #e3e3e3;
 }
