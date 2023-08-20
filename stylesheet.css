@@ -11,9 +11,10 @@
   --send-btn-radius: 100%; /* alternatively, 4px for a more square style */
 
   /* this is the bottom right icon on the website to open the chat */
-  --bubble-widget-background-color: #00A0F9;
-  --bubble-widget-icon-size: 65px;
-  --bubble-widget-icon-url: url(https://i.kym-cdn.com/photos/images/original/001/668/822/e12.jpg)
+  --bubble-widget-background-color: #3c3c3c;
+  --bubble-widget-icon-size: 42px;
+  --bubble-widget-icon-url: url(https://cdn-icons-png.flaticon.com/512/1698/1698535.png);
+
 #btn-close i,
 #btn-delete i,
 #btn-botinfo i,
@@ -426,7 +427,7 @@
 }
 
 .bpw-floating-button {
-  align-self: center;
+  margin-right: 3px;
   background-color: var(--bubble-widget-background-color);
   display: flex;
   justify-content: center;
@@ -479,6 +480,4 @@
 
 *:hover::-webkit-scrollbar-thumb {
   background-color: #e3e3e3;
-}
-
 }
